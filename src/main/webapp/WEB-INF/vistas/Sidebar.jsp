@@ -37,7 +37,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/verCifras"><i class="fas fa-book"></i>Cursos</a>
+                    <a href="/verCifras"><i class="fas fa-book"></i>Cursos</a> 
                 </li>
                 <li>
                     <a href="#">Contact</a>
