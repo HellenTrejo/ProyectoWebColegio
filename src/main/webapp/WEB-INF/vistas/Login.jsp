@@ -14,10 +14,10 @@
 <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
 <meta charset='UTF-8'>
 <meta name="robots" content="noindex">
-<link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
 <link rel="canonical" href="https://codepen.io/Lewitje/pen/BNNJjo?limit=all&page=21&q=animation" />
-<title>Covid 20</title>
+<title>Colegio</title>
 <style type="text/css">
 <style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 * {
@@ -254,11 +254,20 @@ form button:hover {
 <body>
 <div class="wrapper">
 	<div class="container">
+	<c:if test="${sessionScope.MENSAJE != null}">
+						<div class="alert alert-success fade in" id="success-alert">
+						 <a href="#" class="close" data-dismiss="alert">&times;</a>
+						 <strong>${sessionScope.MENSAJE}</strong>
+						</div>
+					</c:if>
+					<c:remove var="MENSAJE" />
+					<br>
+		<form class="form" action="verValidarUsuario">
 		<h1>Bienvenido</h1>
 		
-		<form class="form" action="verLoMenu">
-			<input type="text" placeholder="Usuario">
-			<input type="password" placeholder="Contraseña">
+		
+			<input type="text" placeholder="DNI" name="dni" required>
+			<input type="password" placeholder="Contraseña" name="password" required>
 			<button type="submit" id="btnLogin" >Ingresar</button>
 		</form>
 	</div>
@@ -281,6 +290,10 @@ form button:hover {
 
 //# sourceURL=pen.js
 </script>
-
+<script type="text/javascript">
+$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
+});
+</script>
 </body>
 </html>

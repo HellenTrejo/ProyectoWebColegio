@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Covid</title>
+<title>Colegio</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -241,10 +242,11 @@ a.article:hover {
 					<table id="id_table_docente">
 						<thead>
 							<tr>
-								<th style="width: 20%">Documento Identidad</th>
-								<th style="width: 20%">Estado</th>
-								<th style="width: 30%">Celular</th>
-								<th style="width: 20%">Nacionalidad</th>
+								<th style="width: 10%">DNI</th>
+								<th style="width: 20%">Nombre</th>
+								<th style="width: 20%">Apellido</th>
+								<th style="width: 20%">Celular</th>
+								<th style="width: 20%">Correo</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -258,7 +260,7 @@ a.article:hover {
 			            <!-- Modal content-->
 			            <div class="modal-content">
 			            <div class="modal-body">
-			                    <form id="id_form_save" action="saveCiudadano" class="form-horizontal">
+			                    <form id="id_form_save" action="saveDocente" class="form-horizontal">
 			                            <!-- Step 1 -->
 												<div class="card">
 													<div class="card-header">
@@ -269,45 +271,48 @@ a.article:hover {
 													</div>
 													<div class="card-body">
                                          <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_reg_numdoc">Número Documento</label>
+                                            <label class="col-lg-5 control-label" for="id_reg_dni">DNI</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_numdoc" name="numDoc" placeholder="Ingrese el Nombre" type="number" maxlength="8"/>
+                                                <input class="form-control" id="id_reg_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            
+                                            
+                                                <input class="form-control" type="hidden" id="id_reg_pas" name="password" placeholder="Ingrese contraseña" />
+                                            	
+                                            	<!--  <input class="btn btn-primary" type="button" onclick="gene()" value="Generar"/>-->
+                                           
+                                             
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_nombre">Nombre</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_apellido">Apellido</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_apellido" name="apellido" placeholder="Ingrese el apellido" type="text"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_cel">Celular</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_cel" name="numcel" placeholder="Ingrese el Nombre" type="number"/>
+                                                <input class="form-control" id="id_reg_cel" name="celular" placeholder="Ingrese el celular" type="number"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_reg_tipodoc">Tipo Documento</label>
+                                            <label class="col-lg-5 control-label" for="id_reg_correo">Correo</label>
                                             <div class="col-lg-12">
-                                                <select id="id_reg_tipodoc" name="idtipoDocumento"
-                                                    class='form-control'>
-                                                    <option value=" ">[Seleccione]</option>
-                                                </select>
+                                                <input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo" type="text"/>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_reg_pais">Pais de Origen</label>
-                                            <div class="col-lg-12">
-                                                <select id="id_reg_pais" name="idnacionalidad"
-                                                    class='form-control'>
-                                                    <option value=" ">[Seleccione]</option>
-                                                </select>
-                                            </div>
-                                        </div> 
-                                        <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_reg_estado">Estado</label>
-                                            <div class="col-lg-12">
-                                                <select id="id_reg_estado" name="idestado"
-                                                    class='form-control'>
-                                                    <option value=" ">[Seleccione]</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <input value="2" type="hidden" id="id_reg_idrol" name="idrol">
+                                        
+                                        
+                                        <input value="1" type="hidden" id="id_reg_idrol" name="idrol">
                                        
                                         <div class="form-group">
                                             <div class="col-lg-12" style="text-align: center;">
@@ -331,7 +336,7 @@ a.article:hover {
             <!-- Modal content-->
             <div class="modal-content">
             <div class="modal-body">
-                    <form id="id_form_actualiza" action="updatePersona" class="form-horizontal">
+                    <form id="id_form_actualiza" action="updateDocente" class="form-horizontal">
                             <!-- Step 1 -->
                             <div class="card">
                                 <div class="card-header">
@@ -339,46 +344,45 @@ a.article:hover {
                                 </div>
                                     <div class="card-body">
                                          <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_act_numdoc">Número Documento</label>
+                                            <label class="col-lg-5 control-label" for="id_act_dni">DNI</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_numdoc" name="numDoc" placeholder="Ingrese el Nombre" type="number" maxlength="8"/>
+                                                <input class="form-control" id="id_act_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_pas">Contraseña</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_pas" name="password" placeholder="Ingrese contraseña" type="password" readonly="readonly"/>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_nombre">Nombre</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_apellido">Apellido</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_apellido" name="apellido" placeholder="Ingrese el apellido" type="text"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_cel">Celular</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_cel" name="numcel" placeholder="Ingrese el Nombre" type="number"/>
+                                                <input class="form-control" id="id_act_cel" name="celular" placeholder="Ingrese el celular" type="number"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_act_tipodoc">Tipo Documento</label>
+                                            <label class="col-lg-5 control-label" for="id_act_correo">Correo</label>
                                             <div class="col-lg-12">
-                                                <select id="id_act_tipodoc" name="tipoDocumento.idTipoDocumento"
-                                                    class='form-control'>
-                                                    <option value=" ">[Seleccione]</option>
-                                                </select>
+                                                <input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="text"/>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_act_pais">Pais de Origen</label>
-                                            <div class="col-lg-12">
-                                                <select id="id_act_pais" name="nacionalidad.idNacionalidad"
-                                                    class='form-control'>
-                                                    <option value=" ">[Seleccione]</option>
-                                                </select>
-                                            </div>
-                                        </div> 
-                                        <div class="form-group">
-                                            <label class="col-lg-5 control-label" for="id_act_estado">Estado</label>
-                                            <div class="col-lg-12">
-                                                <select id="id_act_estado" name="estado.idEstado"
-                                                    class='form-control'>
-                                                    <option value=" ">[Seleccione]</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" id="id_act_idrol" name="rol.idRol">
-                                        <input id="id_ID" name="idPersona" type="hidden"/>
+                                        
+                                        <input value="1" type="hidden" id="id_act_idrol" name="idrol">
+                                        <input id="id_ID" name="idUsuario" type="hidden"/>
                                         <div class="form-group">
                                             <div class="col-lg-12" style="text-align: center;">
                                                 <button type="submit" class="btn btn-primary">ACTUALIZA</button>
@@ -396,74 +400,48 @@ a.article:hover {
     </div>
  </div>
  </div>
+ 
+
+ 
 <script type="text/javascript">
 
 $(function() {
-	ListarPersona();
-	ListarTipo();
-	ListarNacionalidad();
-	ListarEstado();
+	ListarDocente();
+	
 });
-function ListarTipo(){
-	$.getJSON("cargaTipoDocumento", {}, function(data){
-		console.log("inicio2");
-		$.each(data, function(index,item){
-			$("#id_act_tipodoc").append("<option value="+item.idTipoDocumento +">"+ item.descripcion +"</option>");
-			$("#id_reg_tipodoc").append("<option value="+item.idTipoDocumento +">"+ item.descripcion +"</option>");
-		});
-	});
-}
-
-function ListarNacionalidad(){
-	$.getJSON("cargaNacionalidad", {}, function(data){
-		console.log("inicio2");
-		$.each(data, function(index,item){
-			$("#id_act_pais").append("<option value="+item.idNacionalidad +">"+ item.nombreNacionalidad +"</option>");
-			$("#id_reg_pais").append("<option value="+item.idNacionalidad +">"+ item.nombreNacionalidad +"</option>");
-		});
-	});
-}
-
-function ListarEstado(){
-	$.getJSON("cargaEstado", {}, function(data){
-		console.log("inicio2");
-		$.each(data, function(index,item){
-			$("#id_act_estado").append("<option value="+item.idEstado +">"+ item.descripcion +"</option>");
-			$("#id_reg_estado").append("<option value="+item.idEstado +">"+ item.descripcion +"</option>");
-		});
-	});
-}
 
 
-function editar(idpersona,nundoc,numcel,idrol,idtipodoc,idnacio, idestado){
-	$('input[id=id_ID]').val(idpersona);
-	$('input[id=id_act_numdoc]').val(nundoc);
-	$('input[id=id_act_cel]').val(numcel);
-	$('select[id=id_act_tipodoc]').val(idtipodoc);
-	$('select[id=id_act_pais]').val(idnacio);
-	$('select[id=id_act_estado]').val(idestado);
+function editar(idUsuario,dni,password,nombre,apellido,celular,correo,idrol){
+	$('input[id=id_ID]').val(idUsuario);
+	$('input[id=id_act_dni]').val(dni);
+	$('input[id=id_act_pas]').val(password);
+	$('input[id=id_act_nombre]').val(nombre);
+	$('input[id=id_act_apellido]').val(apellido);
+	$('input[id=id_act_cel]').val(celular);
+	$('input[id=id_act_correo]').val(correo);
 	$('input[id=id_act_idrol]').val(idrol);
 }
-function ListarPersona(){
+function ListarDocente(){
 	//$("#id_table_docente").DataTable().destroy();
 	$("#id_table_docente tbody").empty(); 
 
 	var tablaDocente="",filaTabla="";
-	$.getJSON("cargaPersona",{},
+	$.getJSON("cargaDocente",{},
 			  function(data){
 		$.each(data,function(index,item){
 			//if(item.estado != undefined){
 			//<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
 				var editar='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#idModalActualiza"  onclick="editar('
-				+item.idPersona+','+"'"+item.numDoc+"'"+','+"'"+item.numcel+"'"+','+"'"+item.rol.idRol+"'"+
-				','+"'"+item.tipoDocumento.idTipoDocumento+"'"+','+"'"+item.nacionalidad.idNacionalidad+"'"+','+"'"+item.estado.idEstado+"'"+
+				+item.idUsuario+','+"'"+item.dni+"'"+','+"'"+item.password+"'"+','+"'"+item.nombre+"'"+','+"'"+item.apellido+"'"+
+				','+"'"+item.celular+"'"+','+"'"+item.correo+"'"+','+"'"+item.rol.idRol+"'"+
 				')">Editar</button>';
 				
 				//var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
-			   filaTabla+="<tr><td>"+item.numDoc+"</td>"+
-					  						  "<td>"+item.estado.descripcion+"</td>"+
-					  						  "<td>"+item.numcel+"</td>"+
-					  						  "<td>"+item.nacionalidad.nombreNacionalidad+"</td>"+
+			   filaTabla+="<tr><td>"+item.dni+"</td>"+
+					  						  "<td>"+item.nombre+"</td>"+
+					  						  "<td>"+item.apellido+"</td>"+
+					  						  "<td>"+item.celular+"</td>"+
+					  						  "<td>"+item.correo+"</td>"+
 											 // "<td>"+editar+"</td>"+
 			  								  "<td>"+editar+"</td></tr>";			
 					//}
@@ -500,15 +478,39 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	numDoc:{
-                    selector: "#id_act_numdoc",
+        	dni:{
+                    selector: "#id_act_dni",
                     validators:{
                         notEmpty: {
                              message: 'El numero de documento es obligatorio'
                         },
                     }
                 },
-                numcel:{
+                password:{
+                    selector: "#id_act_pas",
+                    validators:{
+                        notEmpty: {
+                             message: 'La contraseña es obligatorio'
+                        },
+                    }
+                },
+                nombre:{
+                    selector: "#id_act_nombre",
+                    validators:{
+                        notEmpty: {
+                             message: 'El nombre es obligatorio'
+                        },
+                    }
+                },
+                apellido:{
+                    selector: "#id_act_apellido",
+                    validators:{
+                        notEmpty: {
+                             message: 'El apellido es obligatorio'
+                        },
+                    }
+                },
+                celular:{
                     selector: "#id_act_cel",
                     validators:{
                         notEmpty: {
@@ -520,32 +522,16 @@ $(document).ready(function() {
                         }
                     }
                 },
-                tipoDocumento:{
-                    selector: "#id_act_tipodoc",
+                correo:{
+                    selector: "#id_act_correo",
                     validators:{
                         notEmpty: {
-                             message: 'El tipo documento es obligatorio'
+                             message: 'El correo es obligatorio'
                         }
                     }
                 },
 
-                nacionalidad:{
-                    selector: "#id_act_pais",
-                    validators:{
-                        notEmpty: {
-                             message: 'La nacionalidad es obligatorio'
-                        }
-                    }
-                },
-
-                estado:{
-                    selector: "#id_act_estado",
-                    validators:{
-                        notEmpty: {
-                             message: 'El estado es obligatorio'
-                        }
-                    }
-                },
+               
         }   
     });
 
@@ -566,15 +552,39 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	numDoc:{
-                selector: "#id_reg_numdoc",
+        	dni:{
+                selector: "#id_reg_dni",
                 validators:{
                     notEmpty: {
                          message: 'El numero de documento es obligatorio'
                     },
                 }
             },
-            numcel:{
+            password:{
+                selector: "#id_reg_pas",
+                validators:{
+                    notEmpty: {
+                         message: 'La contraseña es obligatorio'
+                    },
+                }
+            },
+            nombre:{
+                selector: "#id_reg_nombre",
+                validators:{
+                    notEmpty: {
+                         message: 'El nombre es obligatorio'
+                    },
+                }
+            },
+            apellido:{
+                selector: "#id_reg_apellido",
+                validators:{
+                    notEmpty: {
+                         message: 'El apellido es obligatorio'
+                    },
+                }
+            },
+            celular:{
                 selector: "#id_reg_cel",
                 validators:{
                     notEmpty: {
@@ -586,32 +596,15 @@ $(document).ready(function() {
                     }
                 }
             },
-            tipoDocumento:{
-                selector: "#id_reg_tipodoc",
+            correo:{
+                selector: "#id_reg_correo",
                 validators:{
                     notEmpty: {
-                         message: 'El tipo documento es obligatorio'
+                         message: 'El correo es obligatorio'
                     }
                 }
             },
-
-            nacionalidad:{
-                selector: "#id_reg_pais",
-                validators:{
-                    notEmpty: {
-                         message: 'La nacionalidad es obligatorio'
-                    }
-                }
-            },
-
-            estado:{
-                selector: "#id_reg_estado",
-                validators:{
-                    notEmpty: {
-                         message: 'El estado es obligatorio'
-                    }
-                }
-            },
+        	
         }   
     });
 
@@ -627,5 +620,36 @@ $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
     $("#success-alert").slideUp(500);
 });
 </script>
+
+
+ <script type="text/javascript">
+
+ $(function() {
+	 gene();
+		
+	});
+
+ 
+
+	//variable que contiene todos los caracteres
+	 $all="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	 function gene(){
+	 //obtenemos el elemento que nos dara la cantidad de caracteres
+	 $cant=5;
+	 //definimos la varibale que contendra todo el resultado (vacia)
+	 $allChar="";
+	 //$user="Usuario"
+	 //blucle que nos llenara la variable con los nuevos caracteres
+	 for($x=0;$x<$cant;$x++){
+	 //variable que nos devuelve numeros aleatorios (la cantidad de caracteres de la variable $all)
+	 $ran=Math.floor(Math.random()*$all.length);
+	 //le asignamos el nuevo valor a la variable que contiene todo el resultado
+	 $allChar=$allChar+$all[$ran];
+	 }
+	 //escribimos el resultado en un input
+	 document.getElementById("id_reg_pas").value=$allChar;
+	}
+</script>
+
 </body>
 </html>

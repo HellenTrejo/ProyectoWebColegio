@@ -1,15 +1,15 @@
+
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Covid</title>
+<title>Colegio</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css">
-	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css">
+
     <!-- Font Awesome JS -->
-    <script src="https://kit.fontawesome.com/7b6bd29a62.js" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
@@ -20,6 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
@@ -27,6 +28,9 @@ $(document).ready(function () {
     });
 });
 </script>
+
+
+
 <script type="text/javascript" src="js/jquery.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
@@ -36,9 +40,8 @@ $(document).ready(function () {
 <script type="text/javascript" src="js/bootstrapValidator.js"></script>
 
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
-
 <style type="text/css">
-/*
+/*/Covid-1/src/main/resources/static/js/jquery.dataTables.min.js
     DEMO STYLE
 */
 
@@ -211,6 +214,9 @@ a.article:hover {
     	width: 50%;
     }
 }
+.help-block {
+    color: red;
+}
 </style>
 </head>
 <body>
@@ -218,122 +224,45 @@ a.article:hover {
        <jsp:include page="Sidebar.jsp" />
 
         <!-- Page Content  -->
-		<div id="content">
+        <div id="content">
 			<jsp:include page="Nav.jsp" />
-			<div class="container">
-				<!--<form action="">
-			<div class="form-row">
-				<div class="form-group col-md-4">
-					<label>Documento de identidad</label>
-			 		<input class="form-control" type="number" name="filtro" placeholder="Ingrese su dni" maxlength="7">
-				</div> 
-				<div class="form-group col-md-4">
-					<label class="control-label" for="id_estado">
-						Estado 
-					</label> 
-					<select class="form-control" id="id_estado" name="" >
-						<option value=" ">[Seleccione]</option>
-						<option value=" ">Sospechoso</option>
-						<option value=" ">No sospechoso</option>
-						
-					</select>
-				</div>
-				<div class="form-group col-md-4">
-					<label class="control-label" for="id_estado">
-						
-					</label> <br><br>
-					<button type="submit" class="btn btn-primary">Filtrar</button>
-				</div>
+	<div class="container">
+		<c:if test="${sessionScope.MENSAJE != null}">
+			<div class="alert alert-success fade in" id="success-alert">
+			 <a href="#" class="close" data-dismiss="alert">&times;</a>
+			 <strong>${sessionScope.MENSAJE}</strong>
 			</div>
-			<br>
-		</form>-->
+		</c:if>
+		<c:remove var="MENSAJE" />
 				<br>
+				
+				<br><br><br>
 				<div id="divDocente">
 					<table id="id_table_docente">
 						<thead>
 							<tr>
-								<th style="width: 20%">Documento Identidad</th>
-								<th style="width: 40%">Pregunta</th>
-								<th style="width: 20%">Respuesta</th>
-								<th></th>
+								<th style="width: 20%">Curso</th>
+								<th style="width: 20%">DNI</th>
+								<th style="width: 30%">Nombre</th>
+								<th style="width: 30%">Apellido</th>
+														
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 
-
 						</tbody>
 					</table>
 				</div>
-			</div>
+			
+    	
+		
+			
+	
+    </div>
+ </div>
+ </div>
 
-		</div>
-	</div>
-<script type="text/javascript">
-console.log("inicio");
-$("#id_table_docente tbody").empty();
-
-/*function getJSONP(url, success) {
-
-    var ud = '_' + +new Date,
-        script = document.createElement('script'),
-        head = document.getElementsByTagName('head')[0] 
-               || document.documentElement;
-
-    window[ud] = function(data) {
-        head.removeChild(script);
-        success && success(data);
-    };
-
-    script.src = url;//.replace('callback=?', 'callback=' + ud);
-    head.appendChild(script);
-
-}
-
-getJSONP('http://env-4252036.j.layershift.co.uk/rest/servicios/persona', function(data){
-    console.log(data);
-});  
-*/
-
-var tablaDocente="",filaTabla="";
-$.getJSON("cargaTriage",{},
-		  function(data){
-	$.each(data,function(index,item){
-		var editar="<button type='button' class='btn btn-success'>Editar</button>";
-		var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
-				   //$.each(item.triajeP,function(index2,item2){
-					   //if(item2.pregunta != undefined){
-					   filaTabla+="<tr><td>"+item.persona.numDoc+"</td>"+	 
-							  						  "<td>"+item.pregunta.descripcion+"</td>"+
-							  						  "<td>"+item.respuesta+"</td>"+	
-							  						"<td>"+editar+"</td>"+
-					  								  "<td>"+eliminar+"</td></tr>";
-					   //}
-				//})			
-		})
-		$("#id_table_docente tbody").append(filaTabla);
-		//$("#id_table_docente").DataTable().draw();
-		$("#id_table_docente").DataTable({
-			"language": {
-		        "lengthMenu": "_MENU_ registros por pagina",
-		        "zeroRecords": "No existen registros",
-		        "info": "Pagina _PAGE_ de _PAGES_",
-		        "infoEmpty": "Sin registros",
-		        "infoFiltered": "(Filtro de _MAX_ registros)",
-		        "search": "Buscar:",
-			    "paginate": {
-			        "first":      "First",
-			        "last":       "Last",
-			        "next":       "Siguiente",
-			        "previous":   "Anterior"
-			    }
-		    },
-		    "pagingType": "simple"
-		    
-		});
-});
-
-</script>
 
 </body>
 </html>

@@ -1,28 +1,22 @@
 package com.colegio.entidad;
 
-public class Rol{
-
+public class Rol {
 	int idRol;
-	String  nombreRol;
-	
-	
-	
+	String  descripcion;
 	
 	public int getIdRol() {
 		return idRol;
 	}
-
 	public void setIdRol(int idRol) {
 		this.idRol = idRol;
 	}
-
-	public String getNombreRol() {
-		return nombreRol;
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public void setNombreRol(String nombreRol) {
-		this.nombreRol = nombreRol;
-	}
-
+	
 	
 }

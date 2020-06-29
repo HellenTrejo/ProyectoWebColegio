@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Covid</title>
+<title>Colegio</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -232,19 +233,16 @@ a.article:hover {
 					</c:if>
 					<c:remove var="MENSAJE" />
 					<br>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#idModalSave" >Registrar</button>
+					
 					<br>
 				<div id="divDocente">
 				<br>
-					<table id="id_table_cifras">
+					<table id="id_table_curso">
 						<thead>
 							<tr>
-								<th style="width: 20%">Fecha</th>
-								<th style="width: 20%">Nuevos Infectados</th>
-								<th style="width: 30%">Infectados Totales</th>
-								<th style="width: 20%">Infectados Fallecidos</th>
-								<th style="width: 30%">Infectados Recuperados</th>
-								<th style="width: 20%">Departamento</th>
+								<th style="width: 10%">ID</th>
+								<th style="width: 75%">Descripcion</th>
+								
 								<th></th>
 							</tr>
 						</thead>
@@ -258,7 +256,7 @@ a.article:hover {
 			            <!-- Modal content-->
 			            <div class="modal-content">
 			            <div class="modal-body">
-			                    <form id="id_form_save" action="saveCifras" class="form-horizontal">
+			                    <form id="id_form_save" action="saveCurso" class="form-horizontal">
 			                            <!-- Step 1 -->
 												<div class="card">
 													<div class="card-header">
@@ -269,35 +267,11 @@ a.article:hover {
 													</div>
 													<div class="card-body">
 														<div class="form-group">
-															<label class="control-label" for="id_nuevos">Nuevos Casos</label>
-															<input class="form-control" type="number" id="id_nuevos" name="nuevos">
+															<label class="control-label" for="id_descripcion">Descripcion</label>
+															<input class="form-control" type="text" id="id_descripcion" name="descripcion">
 														</div>
 			
-														<div class="form-group">
-															<label class="control-label" for="id_totales">Casos Totales</label>
-															<input class="form-control" type="number" id="id_totales" name="totales">
-														</div>
-			
-														<div class="form-group">
-															<label class="control-label" for="id_fallecidos">Fallecidos</label>
-															<input class="form-control" type="number" id="id_fallecidos" name="fallecidos">
-														</div>
-														<div class="form-group">
-															<label class="control-label" for="id_recuperados">Recuperados</label>
-															<input class="form-control" type="number" id="id_recuperados" name="recuperados">
-														</div>
-														<div class="form-group">
-															<label class="control-label" for="id_fecha">Fecha</label>
-															<input class="form-control" type="date" id="id_fecha" name="fecha">
-														</div>
-														<div class="form-group">
-				                                            <label class="control-label" for="id_departamento">Departamento</label>
-				                                           
-				                                                <select id="id_departamento" name="iddepartamento"
-				                                                    class='form-control'>
-				                                                    <option value=" ">[Seleccione]</option>
-				                                                </select>
-				                                        </div>
+													
 														<div class="form-group">
 															<div class="col-lg-12" style="text-align: center;">
 																<button type="submit" class="btn btn-primary">Guardar</button>
@@ -318,7 +292,7 @@ a.article:hover {
 			            <!-- Modal content-->
 			            <div class="modal-content">
 			            <div class="modal-body">
-			                    <form id="id_form_actualiza" action="updateCifras" class="form-horizontal">
+			                    <form id="id_form_actualiza" action="updateCurso" class="form-horizontal">
 			                            <!-- Step 1 -->
 												<div class="card">
 													<div class="card-header">
@@ -328,38 +302,30 @@ a.article:hover {
 														</h4>
 													</div>
 													<div class="card-body">
+														
 														<div class="form-group">
-															<label class="control-label" for="id_act_nuevos">Nuevos Casos</label>
-															<input class="form-control" type="number" id="id_act_nuevos" name="nuevos">
+															
+																<input class="form-control" id="id_ID" 
+																	name="idCurso" type="hidden" maxlength="8" />
+															
 														</div>
-			
+														
 														<div class="form-group">
-															<label class="control-label" for="id_act_totales">Casos Totales</label>
-															<input class="form-control" type="number" id="id_act_totales" name="totales">
+															<label class="control-label" for="id_act_descripcion">Descripcion</label>
+															<input class="form-control" readonly="readonly" type="text" id="id_act_descripcion" >
 														</div>
-			
+														
 														<div class="form-group">
-															<label class="control-label" for="id_act_fallecidos">Fallecidos</label>
-															<input class="form-control" type="number" id="id_act_fallecidos" name="fallecidos">
+															<label class="col-lg-5 control-label" for="id_act_alu">Alumno</label>
+															<div class="col-lg-12">
+																<select id="id_act_alu" name="usuario.idUsuario"
+																	class='form-control'>
+																	<option value=" ">[Seleccione]</option>
+																</select>
+															</div>
 														</div>
-														<div class="form-group">
-															<label class="control-label" for="id_act_recuperados">Recuperados</label>
-															<input class="form-control" type="number" id="id_act_recuperados" name="recuperados">
-														</div>
-														<div class="form-group">
-															<label class="control-label" for="id_act_fecha">Fecha</label>
-															<input class="form-control" type="date" id="id_act_fecha" name="fecha">
-														</div>
-														 <div class="form-group">
-				                                            <label class="control-label" for="id_act_departamento">Departamento</label>
-				                                            
-				                                                <select id="id_act_departamento" name="iddepartamento"
-				                                                    class='form-control'>
-				                                                    <option value=" ">[Seleccione]</option>
-				                                                </select>
-				      
-				                                        </div>
-				                                          <input id="id_ID" name="idCifras" type="hidden"/>
+
+
 														<div class="form-group">
 															<div class="col-lg-12" style="text-align: center;">
 																<button type="submit" class="btn btn-primary">Guardar</button>
@@ -381,50 +347,43 @@ a.article:hover {
 <script type="text/javascript">
 
 $(function() {
-	ListarCifras();
-	ListarDepartamento();
+	ListarCurso();
+	ListarAlumno();
+
 });
 
-function ListarDepartamento(){
-	$.getJSON("cargaDepartamento", {}, function(data){
+function ListarAlumno(){
+	$.getJSON("cargaAlumno", {}, function(data){
+		console.log("inicio2");
 		$.each(data, function(index,item){
-			$("#id_act_departamento").append("<option value="+item.idDepartamento +">"+ item.descripcion +"</option>");
-			$("#id_departamento").append("<option value="+item.idDepartamento +">"+ item.descripcion +"</option>");
+			$("#id_act_alu").append("<option value="+item.idUsuario +">"+ item.apellido +" "+ item.nombre +"</option>");
 		});
 	});
 }
 
-function editar(idCifras,fecha,nuevos,totales,fallecidos,recuperados, idDepartamento){
-	$('input[id=id_ID]').val(idCifras);
-	$('input[id=id_act_nuevos]').val(nuevos);
-	$('input[id=id_act_totales]').val(totales);
-	$('input[id=id_act_fallecidos]').val(fallecidos);
-	$('input[id=id_act_recuperados]').val(recuperados);
-	$('input[id=id_act_fecha]').val(fecha);
-	$('select[id=id_act_departamento]').val(idDepartamento);
+
+
+function editar(idCurso,descripcion){
+	$('input[id=id_ID]').val(idCurso);
+	$('input[id=id_act_descripcion]').val(descripcion);
+	
 }
-function ListarCifras(){
+function ListarCurso(){
 	//$("#id_table_docente").DataTable().destroy();
-	$("#id_table_cifras tbody").empty(); 
+	$("#id_table_curso tbody").empty(); 
 
 	var tablaDocente="",filaTabla="";
-	$.getJSON("cargaCifras",{},
+	$.getJSON("cargaCurso",{},
 			  function(data){
 		$.each(data,function(index,item){
 				var editar='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#idModalActualiza"  onclick="editar('
-				+item.idCifras+','+"'"+item.fecha+"'"+','+"'"+item.nuevos+"'"+','+"'"+item.totales+"'"+
-				','+"'"+item.fallecidos+"'"+','+"'"+item.recuperados+"'"+','+"'"+item.departamento.idDepartamento+"'"+
-				')">Editar</button>';
-			   filaTabla+="<tr><td>"+item.fecha+"</td>"+
-					  						  "<td>"+item.nuevos+"</td>"+
-					  						  "<td>"+item.totales+"</td>"+
-					  						  "<td>"+item.fallecidos+"</td>"+
-					  						  "<td>"+item.recuperados+"</td>"+
-					  						  "<td>"+item.departamento.descripcion+"</td>"+
+				+item.idCurso+','+"'"+item.descripcion+"'"+
+				')">Buscar</button>';
+			   filaTabla+="<tr><td>"+item.idCurso+"</td>"+"<td>"+item.descripcion+"</td>"+
 			  								  "<td>"+editar+"</td></tr>";		
 				})
-			$("#id_table_cifras tbody").append(filaTabla);
-			$("#id_table_cifras").DataTable({
+			$("#id_table_curso tbody").append(filaTabla);
+			$("#id_table_curso").DataTable({
 				"language": {
 			        "lengthMenu": "_MENU_ registros por pagina",
 			        "zeroRecords": "No existen registros",
@@ -454,52 +413,11 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	nuevos:{
-                    selector: "#id_act_nuevos",
+        	descripcion:{
+                    selector: "#id_act_descripcion",
                     validators:{
                         notEmpty: {
-                             message: 'Ingrese el número de casos nuevos'
-                        }
-                    }
-                },
-                totales:{
-                    selector: "#id_act_totales",
-                    validators:{
-                        notEmpty: {
-                             message: 'Ingrese el total de contagiados'
-                        }
-                    }
-                },
-			fallecidos:{
-                    selector: "#id_act_fallecidos",
-                    validators:{
-                        notEmpty: {
-                             message: 'Ingrese el número de fallecidos'
-                        }
-                    }
-                },
-
-                recuperados:{
-                    selector: "#id_act_recuperados",
-                    validators:{
-                        notEmpty: {
-                             message: 'Ingrese el número de recuperados'
-                        }
-                    }
-                },
-                departamento:{
-                    selector: "#id_act_departamento",
-                    validators:{
-                        notEmpty: {
-                             message: 'Seleccione un departamento'
-                        }
-                    }
-                },
-                fecha:{
-                    selector: "#id_act_fecha",
-                    validators:{
-                        notEmpty: {
-                             message: 'Seleccione una fecha'
+                             message: 'Ingrese la descripcion del curso'
                         }
                     }
                 },
@@ -521,52 +439,11 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	nuevos:{
-                selector: "#id_nuevos",
+        	descripcion:{
+                selector: "#id_descripcion",
                 validators:{
                     notEmpty: {
-                         message: 'Ingrese el número de casos nuevos'
-                    }
-                }
-            },
-            totales:{
-                selector: "#id_totales",
-                validators:{
-                    notEmpty: {
-                         message: 'Ingrese el total de contagiados'
-                    }
-                }
-            },
-		fallecidos:{
-                selector: "#id_fallecidos",
-                validators:{
-                    notEmpty: {
-                         message: 'Ingrese el número de fallecidos'
-                    }
-                }
-            },
-
-            recuperados:{
-                selector: "#id_recuperados",
-                validators:{
-                    notEmpty: {
-                         message: 'Ingrese el número de recuperados'
-                    }
-                }
-            },
-            departamento:{
-                selector: "#id_departamento",
-                validators:{
-                    notEmpty: {
-                         message: 'Seleccione un departamento'
-                    }
-                }
-            },
-            fecha:{
-                selector: "#id_act_fecha",
-                validators:{
-                    notEmpty: {
-                         message: 'Seleccione una fecha'
+                         message: 'Ingrese la descripcion'
                     }
                 }
             },

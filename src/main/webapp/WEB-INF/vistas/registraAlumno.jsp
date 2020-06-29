@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Covid</title>
+<title>Colegio</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -19,6 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
@@ -26,8 +29,20 @@ $(document).ready(function () {
     });
 });
 </script>
+
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+ 
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+
+<link rel="stylesheet" href="css/bootstrapValidator.css"/>
 <style type="text/css">
-/*
+/*/Covid-1/src/main/resources/static/js/jquery.dataTables.min.js
     DEMO STYLE
 */
 
@@ -200,64 +215,254 @@ a.article:hover {
     	width: 50%;
     }
 }
+.help-block {
+    color: red;
+}
 </style>
 </head>
 <body>
-
 <div class="wrapper">
        <jsp:include page="Sidebar.jsp" />
 
         <!-- Page Content  -->
         <div id="content">
 			<jsp:include page="Nav.jsp" />
-            <div class="container">
-					<c:if test="${sessionScope.MENSAJE != null}">
-						<div class="alert alert-success fade in" id="success-alert">
-						 <a href="#" class="close" data-dismiss="alert">&times;</a>
-						 <strong>${sessionScope.MENSAJE}</strong>
-						</div>
-					</c:if>
-					<c:remove var="MENSAJE" />
-					<form action="registroDeAlumno" id="id_form"> 
-				
-							<div class="form-group">
-								<label class="control-label" for="id_nombre">Nombre</label>
-								<input class="form-control" type="text" id="id_nombre" name="nombre" placeholder="Ingrese el nombre" maxlength="40">    
-							</div>
-							
-							<div class="form-group">
-								<label class="control-label" for="id_dni">DNI</label>
-								<input class="form-control" type="text" id="id_dni" name="dni" placeholder="Ingrese el dni" maxlength="8">    
-							</div>
-							
-							<div class="form-group">
-								<label class="control-label" for="id_correo">Correo</label>
-								<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo" maxlength="100">    
-							</div>
-							
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary" >Crea Alumno</button>
-							</div>
-					</form>
+	<div class="container">
+		<c:if test="${sessionScope.MENSAJE != null}">
+			<div class="alert alert-success fade in" id="success-alert">
+			 <a href="#" class="close" data-dismiss="alert">&times;</a>
+			 <strong>${sessionScope.MENSAJE}</strong>
+			</div>
+		</c:if>
+		<c:remove var="MENSAJE" />
+				<br>
+				<button type="button" class="btn btn-primary" data-toggle="modal"
+					data-target="#idModalSave">Registrar</button>
+				<br><br><br>
+				<div id="divDocente">
+					<table id="id_table_docente">
+						<thead>
+							<tr>
+								<th style="width: 10%">DNI</th>
+								<th style="width: 20%">Nombre</th>
+								<th style="width: 20%">Apellido</th>
+								<th style="width: 20%">Celular</th>
+								<th style="width: 20%">Correo</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
 				</div>
-
-          </div>
+			<div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalSave">
+			        <div class="modal-dialog" style="width: 60%" role="document">
+			            <!-- Modal content-->
+			            <div class="modal-content">
+			            <div class="modal-body">
+			                    <form id="id_form_save" action="saveAlumno" class="form-horizontal">
+			                            <!-- Step 1 -->
+												<div class="card">
+													<div class="card-header">
+														<h4 class="panel-title">
+															Datos
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+														</h4>
+													</div>
+													<div class="card-body">
+                                         <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_dni">DNI</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
+                                            </div>
+                                        </div>
+                                        
+                                           
+                                                <input class="form-control" id="id_reg_pas" name="password" placeholder="Ingrese contraseña" type="hidden"/>
+                                            
+                                          
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_nombre">Nombre</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_apellido">Apellido</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_apellido" name="apellido" placeholder="Ingrese el apellido" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_cel">Celular</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_cel" name="celular" placeholder="Ingrese el celular" type="number"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_reg_correo">Correo</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo" type="text"/>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <input value="2" type="hidden" id="id_reg_idrol" name="idrol">
+                                       
+                                        <div class="form-group">
+                                            <div class="col-lg-12" style="text-align: center;">
+                                                <button type="submit" class="btn btn-primary">REGISTRA</button>
+                                            </div>
+                                        </div>
+                                    </div>
+												</div>
+											</form>   
+			            
+			            </div>
+			        </div>
+			    </div>
+        
     </div>
-
-
+    	
+		
+			
+	<div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalActualiza">
+        <div class="modal-dialog" style="width: 60%" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-body">
+                    <form id="id_form_actualiza" action="updateAlumno" class="form-horizontal">
+                            <!-- Step 1 -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="panel-title">Datos<button type="button" class="close" data-dismiss="modal">&times;</button></h4>
+                                </div>
+                                    <div class="card-body">
+                                         <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_dni">DNI</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_pas">Contraseña</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_pas" name="password" placeholder="Ingrese contraseña" type="password" readonly="readonly"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_nombre">Nombre</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_apellido">Apellido</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_apellido" name="apellido" placeholder="Ingrese el apellido" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_cel">Celular</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_cel" name="celular" placeholder="Ingrese el celular" type="number"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_correo">Correo</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="text"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <input value="2" type="hidden" id="id_act_idrol" name="idrol">
+                                        <input id="id_ID" name="idUsuario" type="hidden"/>
+                                        <div class="form-group">
+                                            <div class="col-lg-12" style="text-align: center;">
+                                                <button type="submit" class="btn btn-primary">ACTUALIZA</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                    </form>   
+            
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    </div>
+ </div>
+ </div>
 <script type="text/javascript">
-$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
-    $("#success-alert").slideUp(500);
+
+$(function() {
+	ListarAlumno();
+	
 });
-</script>
 
-<!-- 
-	https://mkyong.com/tutorials/java-regular-expression-tutorials/
 
- -->
-<script type="text/javascript">
+function editar(idUsuario,dni,password,nombre,apellido,celular,correo,idrol){
+	$('input[id=id_ID]').val(idUsuario);
+	$('input[id=id_act_dni]').val(dni);
+	$('input[id=id_act_pas]').val(password);
+	$('input[id=id_act_nombre]').val(nombre);
+	$('input[id=id_act_apellido]').val(apellido);
+	$('input[id=id_act_cel]').val(celular);
+	$('input[id=id_act_correo]').val(correo);
+	$('input[id=id_act_idrol]').val(idrol);
+}
+function ListarAlumno(){
+	//$("#id_table_docente").DataTable().destroy();
+	$("#id_table_docente tbody").empty(); 
+
+	var tablaDocente="",filaTabla="";
+	$.getJSON("cargaAlumno",{},
+			  function(data){
+		$.each(data,function(index,item){
+			//if(item.estado != undefined){
+			//<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+				var editar='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#idModalActualiza"  onclick="editar('
+				+item.idUsuario+','+"'"+item.dni+"'"+','+"'"+item.password+"'"+','+"'"+item.nombre+"'"+','+"'"+item.apellido+"'"+
+				','+"'"+item.celular+"'"+','+"'"+item.correo+"'"+','+"'"+item.rol.idRol+"'"+
+				')">Editar</button>';
+				
+				//var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
+			   filaTabla+="<tr><td>"+item.dni+"</td>"+
+					  						  "<td>"+item.nombre+"</td>"+
+					  						  "<td>"+item.apellido+"</td>"+
+					  						  "<td>"+item.celular+"</td>"+
+					  						  "<td>"+item.correo+"</td>"+
+											 // "<td>"+editar+"</td>"+
+			  								  "<td>"+editar+"</td></tr>";			
+					//}
+				})
+			$("#id_table_docente tbody").append(filaTabla);
+			//$("#id_table_docente").DataTable().draw();
+			$("#id_table_docente").DataTable({
+				"language": {
+			        "lengthMenu": "_MENU_ registros por pagina",
+			        "zeroRecords": "No existen registros",
+			        "info": "Pagina _PAGE_ de _PAGES_",
+			        "infoEmpty": "Sin registros",
+			        "infoFiltered": "(Filtro de _MAX_ registros)",
+			        "search": "Buscar:",
+				    "paginate": {
+				        "first":      "First",
+				        "last":       "Last",
+				        "next":       "Siguiente",
+				        "previous":   "Anterior"
+				    }
+			    },
+			    "pagingType": "simple"
+			    
+			});
+	});
+}
+
 $(document).ready(function() {
-    $('#id_form').bootstrapValidator({
+    $('#id_form_actualiza').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -265,55 +470,175 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        		nombre:{
-                    selector: "#id_nombre",
+        	dni:{
+                    selector: "#id_act_dni",
+                    validators:{
+                        notEmpty: {
+                             message: 'El numero de documento es obligatorio'
+                        },
+                    }
+                },
+                password:{
+                    selector: "#id_act_pas",
+                    validators:{
+                        notEmpty: {
+                             message: 'La contraseña es obligatorio'
+                        },
+                    }
+                },
+                nombre:{
+                    selector: "#id_act_nombre",
                     validators:{
                         notEmpty: {
                              message: 'El nombre es obligatorio'
                         },
-                        stringLength: {
-                            min: 3,
-                            max: 40,
-                            message: 'El nombre es de 3 a 40 caracteres'
+                    }
+                },
+                apellido:{
+                    selector: "#id_act_apellido",
+                    validators:{
+                        notEmpty: {
+                             message: 'El apellido es obligatorio'
                         },
                     }
                 },
-                dni:{
-                    selector: "#id_dni",
+                celular:{
+                    selector: "#id_act_cel",
                     validators:{
                         notEmpty: {
-                             message: 'El dni es obligatorio'
+                             message: 'El numero de celular es obligatorio'
                         },
                         regexp: {
-                            regexp: /^[0-9]{8}$/,
-                            message: 'el dni es 8 dígitos'
+                            regexp: /^[0-9]{9}$/,
+                            message: 'El numero de celular es de 9 dígitos'
                         }
                     }
                 },
                 correo:{
-                    selector: "#id_correo",
+                    selector: "#id_act_correo",
                     validators:{
                         notEmpty: {
                              message: 'El correo es obligatorio'
-                        },
-                        emailAddress: {
-                            message: 'El correo no es valido'
                         }
                     }
                 },
+
+               
         }   
     });
 
     // Validate the form manually
     $('#validateBtn').click(function() {
-        $('#id_form').bootstrapValidator('validate');
+        $('#id_form_actualiza').bootstrapValidator('validate');
+        
     });
 });
+
+
+$(document).ready(function() {
+    $('#id_form_save').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	dni:{
+                selector: "#id_reg_dni",
+                validators:{
+                    notEmpty: {
+                         message: 'El numero de documento es obligatorio'
+                    },
+                }
+            },
+            password:{
+                selector: "#id_reg_pas",
+                validators:{
+                    notEmpty: {
+                         message: 'La contraseña es obligatorio'
+                    },
+                }
+            },
+            nombre:{
+                selector: "#id_reg_nombre",
+                validators:{
+                    notEmpty: {
+                         message: 'El nombre es obligatorio'
+                    },
+                }
+            },
+            apellido:{
+                selector: "#id_reg_apellido",
+                validators:{
+                    notEmpty: {
+                         message: 'El apellido es obligatorio'
+                    },
+                }
+            },
+            celular:{
+                selector: "#id_reg_cel",
+                validators:{
+                    notEmpty: {
+                         message: 'El numero de celular es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]{9}$/,
+                        message: 'El numero de celular es de 9 dígitos'
+                    }
+                }
+            },
+            correo:{
+                selector: "#id_reg_correo",
+                validators:{
+                    notEmpty: {
+                         message: 'El correo es obligatorio'
+                    }
+                }
+            },
+        	
+        }   
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#id_form_save').bootstrapValidator('validate');
+    });
+});
+
+</script>
+<script type="text/javascript">
+$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
+});
+</script>
+
+ <script type="text/javascript">
+
+ $(function() {
+	 gene();	
+	});
+
+ 
+	//variable que contiene todos los caracteres
+	 $all="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	 function gene(){
+	 //obtenemos el elemento que nos dara la cantidad de caracteres
+	 $cant=5;
+	 //definimos la varibale que contendra todo el resultado (vacia)
+	 $allChar="";
+	 //$user="Usuario"
+	 //blucle que nos llenara la variable con los nuevos caracteres
+	 for($x=0;$x<$cant;$x++){
+	 //variable que nos devuelve numeros aleatorios (la cantidad de caracteres de la variable $all)
+	 $ran=Math.floor(Math.random()*$all.length);
+	 //le asignamos el nuevo valor a la variable que contiene todo el resultado
+	 $allChar=$allChar+$all[$ran];
+	 }
+	 //escribimos el resultado en un input
+	 document.getElementById("id_reg_pas").value=$allChar;
+	}
 </script>
 
 </body>
 </html>
-
-
-
-

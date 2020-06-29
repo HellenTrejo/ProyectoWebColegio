@@ -1,13 +1,14 @@
 package com.colegio.entidad;
 
-public class Departamento {
-	private int idDepartamento;
+public class Curso {
+	private int idCurso;
 	private String descripcion;
-	public int getIdDepartamento() {
-		return idDepartamento;
+	
+	public int getIdCurso() {
+		return idCurso;
 	}
-	public void setIdDepartamento(int idDepartamento) {
-		this.idDepartamento = idDepartamento;
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -16,4 +17,5 @@ public class Departamento {
 		this.descripcion = descripcion;
 	}
 	
+
 }
