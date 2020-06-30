@@ -261,7 +261,7 @@ a.article:hover {
 			            <!-- Modal content-->
 			            <div class="modal-content">
 			            <div class="modal-body">
-			                    <form id="id_form_save" action="saveAlumno" class="form-horizontal">
+			                    <form id="id_form_save" action="saveAlumno" class="form-horizontal"  accept-charset="UTF-8">
 			                            <!-- Step 1 -->
 												<div class="card">
 													<div class="card-header">
@@ -332,7 +332,7 @@ a.article:hover {
             <!-- Modal content-->
             <div class="modal-content">
             <div class="modal-body">
-                    <form id="id_form_actualiza" action="updateAlumno" class="form-horizontal">
+                    <form id="id_form_actualiza" action="updateAlumno" class="form-horizontal" accept-charset="UTF-8">
                             <!-- Step 1 -->
                             <div class="card">
                                 <div class="card-header">
