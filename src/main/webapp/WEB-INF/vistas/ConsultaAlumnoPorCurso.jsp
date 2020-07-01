@@ -227,13 +227,7 @@ a.article:hover {
         <div id="content">
 			<jsp:include page="Nav.jsp" />
 	<div class="container">
-		<c:if test="${sessionScope.MENSAJE != null}">
-			<div class="alert alert-success fade in" id="success-alert">
-			 <a href="#" class="close" data-dismiss="alert">&times;</a>
-			 <strong>${sessionScope.MENSAJE}</strong>
-			</div>
-		</c:if>
-		<c:remove var="MENSAJE" />
+		
 				<br>
 				
 				<br><br><br>
@@ -262,6 +256,70 @@ a.article:hover {
     </div>
  </div>
  </div>
+<script type="text/javascript">
+console.log("inicio");
+$("#id_table_docente tbody").empty();
+
+/*function getJSONP(url, success) {
+
+    var ud = '_' + +new Date,
+        script = document.createElement('script'),
+        head = document.getElementsByTagName('head')[0] 
+               || document.documentElement;
+
+    window[ud] = function(data) {
+        head.removeChild(script);
+        success && success(data);
+    };
+
+    script.src = url;//.replace('callback=?', 'callback=' + ud);
+    head.appendChild(script);
+
+}
+
+getJSONP('http://env-4252036.j.layershift.co.uk/rest/servicios/persona', function(data){
+    console.log(data);
+});  
+*/
+
+var tablaDocente="",filaTabla="";
+$.getJSON("cargaAlumnoXCurso",{},
+		  function(data){
+	$.each(data,function(index,item){
+		var editar="<button type='button' class='btn btn-success'>Editar</button>";
+		var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
+				   //$.each(item.triajeP,function(index2,item2){
+					   //if(item2.pregunta != undefined){
+					   filaTabla+="<tr><td>"+item.curso.descripcion+"</td>"+	 
+							  						  "<td>"+item.usuario.dni+"</td>"+
+							  						  "<td>"+item.usuario.nombre+"</td>"+
+					  								  "<td>"+item.usuario.apellido+"</td></tr>";
+					   //}
+				//})			
+		})
+		$("#id_table_docente tbody").append(filaTabla);
+		//$("#id_table_docente").DataTable().draw();
+		$("#id_table_docente").DataTable({
+			"language": {
+		        "lengthMenu": "_MENU_ registros por pagina",
+		        "zeroRecords": "No existen registros",
+		        "info": "Pagina _PAGE_ de _PAGES_",
+		        "infoEmpty": "Sin registros",
+		        "infoFiltered": "(Filtro de _MAX_ registros)",
+		        "search": "Buscar:",
+			    "paginate": {
+			        "first":      "First",
+			        "last":       "Last",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+			    }
+		    },
+		    "pagingType": "simple"
+		    
+		});
+});
+
+</script>
 
 
 </body>

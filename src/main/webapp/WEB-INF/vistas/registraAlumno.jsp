@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Colegio</title>
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
@@ -277,11 +276,16 @@ a.article:hover {
                                                 <input class="form-control" id="id_reg_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
                                             </div>
                                         </div>
-                                        
-                                           
-                                                <input class="form-control" id="id_reg_pas" name="password" placeholder="Ingrese contraseña" type="hidden"/>
+                                        <div class="form-group">
                                             
-                                          
+                                            
+                                                <input class="form-control" type="hidden" id="id_reg_pas" name="password" placeholder="Ingrese contraseña" />
+                                            	
+                                            	<!--  <input class="btn btn-primary" type="button" onclick="gene()" value="Generar"/>-->
+                                           
+                                             
+
+                                        </div>                          
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_nombre">Nombre</label>
                                             <div class="col-lg-12">
@@ -613,6 +617,7 @@ $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
 });
 </script>
 
+
  <script type="text/javascript">
 
  $(function() {
@@ -624,7 +629,7 @@ $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
 	 $all="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	 function gene(){
 	 //obtenemos el elemento que nos dara la cantidad de caracteres
-	 $cant=5;
+	 $cant=10;
 	 //definimos la varibale que contendra todo el resultado (vacia)
 	 $allChar="";
 	 //$user="Usuario"

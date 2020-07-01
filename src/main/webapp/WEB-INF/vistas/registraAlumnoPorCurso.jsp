@@ -241,7 +241,7 @@ a.article:hover {
 						<thead>
 							<tr>
 								<th style="width: 10%">ID</th>
-								<th style="width: 75%">Descripcion</th>
+								<th style="width: 75%">Curso</th>
 								
 								<th></th>
 							</tr>
@@ -251,48 +251,13 @@ a.article:hover {
 						</tbody>
 					</table>
 				</div>
-				<div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalSave">
-			        <div class="modal-dialog" style="width: 60%" role="document">
-			            <!-- Modal content-->
-			            <div class="modal-content">
-			            <div class="modal-body">
-			                    <form id="id_form_save" action="saveCurso" class="form-horizontal" accept-charset="UTF-8">
-			                            <!-- Step 1 -->
-												<div class="card">
-													<div class="card-header">
-														<h4 class="panel-title">
-															Datos
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
-														</h4>
-													</div>
-													<div class="card-body">
-														<div class="form-group">
-															<label class="control-label" for="id_descripcion">Descripcion</label>
-															<input class="form-control" type="text" id="id_descripcion" name="descripcion">
-														</div>
-			
-													
-														<div class="form-group">
-															<div class="col-lg-12" style="text-align: center;">
-																<button type="submit" class="btn btn-primary">Guardar</button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</form>   
-			            
-			            </div>
-			        </div>
-			    </div>
-        
-    </div>
-    
+				
     <div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalActualiza">
 			        <div class="modal-dialog" style="width: 60%" role="document">
 			            <!-- Modal content-->
 			            <div class="modal-content">
 			            <div class="modal-body">
-			                    <form id="id_form_actualiza" action="updateCurso" class="form-horizontal" accept-charset="UTF-8">
+			                    <form id="id_form_actualiza" action="saveAlumnoXCurso" class="form-horizontal"  accept-charset="UTF-8">
 			                            <!-- Step 1 -->
 												<div class="card">
 													<div class="card-header">
@@ -306,19 +271,18 @@ a.article:hover {
 														<div class="form-group">
 															
 																<input class="form-control" id="id_ID" 
-																	name="idCurso" type="hidden" maxlength="8" />
+																	name="idcurso" type="hidden" maxlength="8" />
 															
 														</div>
-														
 														<div class="form-group">
 															<label class="control-label" for="id_act_descripcion">Descripcion</label>
 															<input class="form-control" readonly="readonly" type="text" id="id_act_descripcion" >
 														</div>
-														
+			
 														<div class="form-group">
-															<label class="col-lg-5 control-label" for="id_act_alu">Alumno</label>
+															<label class="col-lg-5 control-label" for="id_act_doc">Alumno</label>
 															<div class="col-lg-12">
-																<select id="id_act_alu" name="usuario.idUsuario"
+																<select id="id_act_doc" name="idusuario"
 																	class='form-control'>
 																	<option value=" ">[Seleccione]</option>
 																</select>
@@ -326,7 +290,7 @@ a.article:hover {
 														</div>
 
 
-														<div class="form-group">
+											<div class="form-group">
 															<div class="col-lg-12" style="text-align: center;">
 																<button type="submit" class="btn btn-primary">Guardar</button>
 															</div>
@@ -348,19 +312,18 @@ a.article:hover {
 
 $(function() {
 	ListarCurso();
-	ListarAlumno();
+	ListarDocente();
 
 });
 
-function ListarAlumno(){
+function ListarDocente(){
 	$.getJSON("cargaAlumno", {}, function(data){
 		console.log("inicio2");
 		$.each(data, function(index,item){
-			$("#id_act_alu").append("<option value="+item.idUsuario +">"+ item.apellido +" "+ item.nombre +"</option>");
+			$("#id_act_doc").append("<option value="+item.idUsuario +">"+ item.apellido +" "+ item.nombre +"</option>");
 		});
 	});
 }
-
 
 
 function editar(idCurso,descripcion){
@@ -430,31 +393,7 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function() {
-    $('#id_form_save').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-        	descripcion:{
-                selector: "#id_descripcion",
-                validators:{
-                    notEmpty: {
-                         message: 'Ingrese la descripcion'
-                    }
-                }
-            },
-        }   
-    });
 
-    // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#id_form_save').bootstrapValidator('validate');
-    });
-});
 </script>
 <script type="text/javascript">
 $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){

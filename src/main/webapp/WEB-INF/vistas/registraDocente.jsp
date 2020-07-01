@@ -635,7 +635,7 @@ $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
 	 $all="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	 function gene(){
 	 //obtenemos el elemento que nos dara la cantidad de caracteres
-	 $cant=5;
+	 $cant=10;
 	 //definimos la varibale que contendra todo el resultado (vacia)
 	 $allChar="";
 	 //$user="Usuario"
