@@ -42,7 +42,7 @@
                     <a href="/verCurso"><i class="fas fa-book"></i> Cursos</a> 
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-clipboard"></i> Notas</a> 
+                    <a href="/verNotas"><i class="fas fa-clipboard"></i> Notas</a> 
                 </li>
                 <li>
                     <a href="#">Contact</a>

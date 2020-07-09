@@ -6,9 +6,11 @@ public class Nota {
 	
 	private Curso curso;
 	private Usuario usuario;
+	private Evaluacion evaluacion;
 	
 	private int idcurso;
 	private int idusuario;
+	private int idevalucion;
 	
 	public int getIdNota() {
 		return idNota;
@@ -46,5 +48,19 @@ public class Nota {
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
+	public Evaluacion getEvaluacion() {
+		return evaluacion;
+	}
+	public void setEvaluacion(Evaluacion evaluacion) {
+		this.evaluacion = evaluacion;
+	}
+	public int getIdevalucion() {
+		return idevalucion;
+	}
+	public void setIdevalucion(int idevalucion) {
+		this.idevalucion = idevalucion;
+	}
+	
+	
 
 }
