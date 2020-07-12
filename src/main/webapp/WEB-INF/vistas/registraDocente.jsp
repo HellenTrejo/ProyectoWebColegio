@@ -273,7 +273,7 @@ a.article:hover {
                                          <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_dni">DNI</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
+                                                <input class="form-control" id="id_reg_dni" name="dni" placeholder="Ingrese el dni" type="text" pattern="\d{8}" title="Requiere número de 8 dígitos" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -289,25 +289,25 @@ a.article:hover {
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_nombre">Nombre</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text"/>
+                                                <input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_apellido">Apellido</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_apellido" name="apellido" placeholder="Ingrese el apellido" type="text"/>
+                                                <input class="form-control" id="id_reg_apellido" name="apellido" placeholder="Ingrese el apellido" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_cel">Celular</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_cel" name="celular" placeholder="Ingrese el celular" type="number"/>
+                                                <input class="form-control" id="id_reg_cel" name="celular" placeholder="Ingrese el celular" type="text" pattern="\d{9}" title="Requiere número de 9 dígitos" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_correo">Correo</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo" type="text"/>
+                                                <input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo" type="text" type="text" pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" title="Requiere el formato: email@direccion.com" required/>
                                             </div>
                                         </div>
                                         
@@ -346,7 +346,7 @@ a.article:hover {
                                          <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_dni">DNI</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_dni" name="dni" placeholder="Ingrese el dni" type="number" maxlength="8"/>
+                                                <input class="form-control" id="id_act_dni" name="dni" placeholder="Ingrese el dni" type="text" pattern="\d{8}" title="Requiere número de 8 dígitos" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -359,25 +359,25 @@ a.article:hover {
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_nombre">Nombre</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text"/>
+                                                <input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_apellido">Apellido</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_apellido" name="apellido" placeholder="Ingrese el apellido" type="text"/>
+                                                <input class="form-control" id="id_act_apellido" name="apellido" placeholder="Ingrese el apellido" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_cel">Celular</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_cel" name="celular" placeholder="Ingrese el celular" type="number"/>
+                                                <input class="form-control" id="id_act_cel" name="celular" placeholder="Ingrese el celular" type="text" pattern="\d{9}" title="Requiere número de 9 dígitos" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_correo">Correo</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="text"/>
+                                                <input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="text" pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" title="Requiere el formato: email@direccion.com" required/>
                                             </div>
                                         </div>
                                         
@@ -468,151 +468,6 @@ function ListarDocente(){
 			});
 	});
 }
-
-$(document).ready(function() {
-    $('#id_form_actualiza').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-        	dni:{
-                    selector: "#id_act_dni",
-                    validators:{
-                        notEmpty: {
-                             message: 'El numero de documento es obligatorio'
-                        },
-                    }
-                },
-                password:{
-                    selector: "#id_act_pas",
-                    validators:{
-                        notEmpty: {
-                             message: 'La contraseña es obligatorio'
-                        },
-                    }
-                },
-                nombre:{
-                    selector: "#id_act_nombre",
-                    validators:{
-                        notEmpty: {
-                             message: 'El nombre es obligatorio'
-                        },
-                    }
-                },
-                apellido:{
-                    selector: "#id_act_apellido",
-                    validators:{
-                        notEmpty: {
-                             message: 'El apellido es obligatorio'
-                        },
-                    }
-                },
-                celular:{
-                    selector: "#id_act_cel",
-                    validators:{
-                        notEmpty: {
-                             message: 'El numero de celular es obligatorio'
-                        },
-                        regexp: {
-                            regexp: /^[0-9]{9}$/,
-                            message: 'El numero de celular es de 9 dígitos'
-                        }
-                    }
-                },
-                correo:{
-                    selector: "#id_act_correo",
-                    validators:{
-                        notEmpty: {
-                             message: 'El correo es obligatorio'
-                        }
-                    }
-                },
-
-               
-        }   
-    });
-
-    // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#id_form_actualiza').bootstrapValidator('validate');
-        
-    });
-});
-
-
-$(document).ready(function() {
-    $('#id_form_save').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-        	dni:{
-                selector: "#id_reg_dni",
-                validators:{
-                    notEmpty: {
-                         message: 'El numero de documento es obligatorio'
-                    },
-                }
-            },
-            password:{
-                selector: "#id_reg_pas",
-                validators:{
-                    notEmpty: {
-                         message: 'La contraseña es obligatorio'
-                    },
-                }
-            },
-            nombre:{
-                selector: "#id_reg_nombre",
-                validators:{
-                    notEmpty: {
-                         message: 'El nombre es obligatorio'
-                    },
-                }
-            },
-            apellido:{
-                selector: "#id_reg_apellido",
-                validators:{
-                    notEmpty: {
-                         message: 'El apellido es obligatorio'
-                    },
-                }
-            },
-            celular:{
-                selector: "#id_reg_cel",
-                validators:{
-                    notEmpty: {
-                         message: 'El numero de celular es obligatorio'
-                    },
-                    regexp: {
-                        regexp: /^[0-9]{9}$/,
-                        message: 'El numero de celular es de 9 dígitos'
-                    }
-                }
-            },
-            correo:{
-                selector: "#id_reg_correo",
-                validators:{
-                    notEmpty: {
-                         message: 'El correo es obligatorio'
-                    }
-                }
-            },
-        	
-        }   
-    });
-
-    // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#id_form_save').bootstrapValidator('validate');
-    });
-});
 
 </script>
 <script type="text/javascript">

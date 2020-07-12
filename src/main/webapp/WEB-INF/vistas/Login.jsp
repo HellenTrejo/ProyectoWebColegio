@@ -262,11 +262,11 @@ form button:hover {
 					</c:if>
 					<c:remove var="MENSAJE" />
 					<br>
-		<form class="form" action="verValidarUsuario">
+		<form class="form" action="verValidarUsuario"> 
 		<h1>Bienvenido</h1>
 		
 		
-			<input type="text" placeholder="DNI" name="dni" required>
+			<input type="text" placeholder="DNI" name="dni" pattern="[0-9]{8}" title="Requiere número de 8 dígitos" required>
 			<input type="password" placeholder="Contraseña" name="password" required>
 			<button type="submit" id="btnLogin" >Ingresar</button>
 		</form>

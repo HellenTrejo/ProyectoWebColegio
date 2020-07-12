@@ -268,7 +268,7 @@ a.article:hover {
 													<div class="card-body">
 														<div class="form-group">
 															<label class="control-label" for="id_descripcion">Descripcion</label>
-															<input class="form-control" type="text" id="id_descripcion" name="descripcion">
+															<input class="form-control" type="text" id="id_descripcion" name="descripcion" pattern="\D+" title="Requiere un formato correcto" required>
 														</div>
 			
 													
@@ -304,7 +304,7 @@ a.article:hover {
 													<div class="card-body">
 														<div class="form-group">
 															<label class="control-label" for="id_act_descripcion">Descripcion</label>
-															<input class="form-control" type="text" id="id_act_descripcion" name="descripcion">
+															<input class="form-control" type="text" id="id_act_descripcion" name="descripcion" pattern="\D+" title="Requiere un formato correcto" required>
 														</div>
 			
 														
@@ -377,57 +377,7 @@ function ListarCurso(){
 	});
 }
 
-$(document).ready(function() {
-    $('#id_form_actualiza').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-        	descripcion:{
-                    selector: "#id_act_descripcion",
-                    validators:{
-                        notEmpty: {
-                             message: 'Ingrese la descripcion del curso'
-                        }
-                    }
-                },
-        }   
-    });
 
-    // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#id_form_actualiza').bootstrapValidator('validate');
-    });
-});
-
-$(document).ready(function() {
-    $('#id_form_save').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-        	descripcion:{
-                selector: "#id_descripcion",
-                validators:{
-                    notEmpty: {
-                         message: 'Ingrese la descripcion'
-                    }
-                }
-            },
-        }   
-    });
-
-    // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#id_form_save').bootstrapValidator('validate');
-    });
-});
 </script>
 <script type="text/javascript">
 $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
