@@ -267,7 +267,7 @@ form button:hover {
 		
 		
 			<input type="text" placeholder="DNI" name="dni" pattern="[0-9]{8}" title="Requiere número de 8 dígitos" required>
-			<input type="password" placeholder="Contraseña" name="password" required>
+			<input type="password" placeholder="Contraseña" name="password" pattern="[a-zA-Z0-9]{5}" title="Requiere 5 caracteres" required>
 			<button type="submit" id="btnLogin" >Ingresar</button>
 		</form>
 	</div>

@@ -268,7 +268,7 @@ a.article:hover {
 													<div class="card-body">
 														<div class="form-group">
 															<label class="control-label" for="id_descripcion">Descripcion</label>
-															<input class="form-control" type="text" id="id_descripcion" name="descripcion" pattern="\D+" title="Requiere un formato correcto" required>
+															<input class="form-control" type="text" id="id_descripcion" name="descripcion" pattern="\S+\D+" title="Requiere un formato correcto" required>
 														</div>
 			
 													
@@ -304,7 +304,7 @@ a.article:hover {
 													<div class="card-body">
 														<div class="form-group">
 															<label class="control-label" for="id_act_descripcion">Descripcion</label>
-															<input class="form-control" type="text" id="id_act_descripcion" name="descripcion" pattern="\D+" title="Requiere un formato correcto" required>
+															<input class="form-control" type="text" id="id_act_descripcion" name="descripcion" pattern="\S+\D+" title="Requiere un formato correcto" required>
 														</div>
 			
 														

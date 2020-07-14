@@ -421,6 +421,14 @@ $(document).ready(function() {
                         },
                     }
                },
+               "idevalucion":{
+                   selector: "#id_act_eva",
+                   validators:{
+                       notEmpty: {
+                            message: 'Seleccione evaluación'
+                       },
+                   }
+              },
                "descripcion" :{
             	   selector: "#id_act_not",
            		validators :{

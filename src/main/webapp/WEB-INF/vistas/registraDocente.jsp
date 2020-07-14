@@ -289,13 +289,13 @@ a.article:hover {
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_nombre">Nombre</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
+                                                <input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" pattern="\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+" minlength="2" maxlength="10" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_reg_apellido">Apellido</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_reg_apellido" name="apellido" placeholder="Ingrese el apellido" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
+                                                <input class="form-control" id="id_reg_apellido" name="apellido" placeholder="Ingrese el apellido" type="text" pattern="\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+" minlength="2" maxlength="10" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -359,13 +359,13 @@ a.article:hover {
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_nombre">Nombre</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
+                                                <input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" pattern="\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+" minlength="2" maxlength="10" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_apellido">Apellido</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_apellido" name="apellido" placeholder="Ingrese el apellido" type="text" pattern="[a-zA-ZñÑ\s]+" title="Solo mayúsculas, minúsculas y espacios" required/>
+                                                <input class="form-control" id="id_act_apellido" name="apellido" placeholder="Ingrese el apellido" type="text" pattern="\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+\s{1}[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+|\S+[a-zA-ZñÑáéíóúÁÉÍüÓÚÜ]+" minlength="2" maxlength="10" title="Solo mayúsculas, minúsculas y espacios" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
